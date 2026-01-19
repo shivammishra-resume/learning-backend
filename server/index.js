@@ -4,6 +4,9 @@ const app = express(); //express() creates a server app, app = your server insta
 
 app.use(express.json());  // Mean: “Backend, please understand JSON body sent by frontend.”, Without this: POST requests break, req.body is undefined
 
+app.use("/api", require("./routes/testRoutes"));  // “Any request starting with /api, send it to this router.”, then in router: router.get("/test", ...), So full path becomes: /api/test , This is route composition.
+
+
 app.get("/", (req, res) => {
   res.send("Hello from backend");
 });    // get → HTTP GET request, / → route (URL path), req → request (incoming data), res → response (what you send back), i.e. “When someone visits /, give them a response.”
