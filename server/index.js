@@ -2,7 +2,22 @@ const express = require("express");    // You are importing Express, express is 
 
 const app = express(); //express() creates a server app, app = your server instance,Think:app = restaurant, Express = restaurant blueprint
 
-app.listen(5000, () => {
-    console.log("Server is running on port 5000")
+app.use(express.json());  // Mean: “Backend, please understand JSON body sent by frontend.”, Without this: POST requests break, req.body is undefined
+
+app.get("/", (req, res) => {
+  res.send("Hello from backend");
+});    // get → HTTP GET request, / → route (URL path), req → request (incoming data), res → response (what you send back), i.e. “When someone visits /, give them a response.”
+
+app.get("/api/test", (req, res) => {
+  res.json({ message: "API working" });
+});
+app.get("/api/hello", (req, res) => {
+  res.json({ name: "Shivam" });
+});
+
+
+
+app.listen(4000, () => {
+    console.log("Server is running on port 4000");
 }); // listen = “wait”, 5000 = door number (port), Callback = confirmation message
 // In English: “Hey computer, start a server and listen on door 5000.”
