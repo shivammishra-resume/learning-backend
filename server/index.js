@@ -3,12 +3,12 @@ const express = require("express");    // You are importing Express, express is 
 const app = express(); //express() creates a server app, app = your server instance,Think:app = restaurant, Express = restaurant blueprint
 
 const logger = require("./middleware/logger");
-const timeLogger = require("./middleware/logger");
+// const timeLogger = require("./middleware/logger");
 
 app.use(express.json());  // Mean: “Backend, please understand JSON body sent by frontend.”, Without this: POST requests break, req.body is undefined
 
 app.use(logger);
-app.use(timeLogger)
+// app.use(timeLogger)
 
 app.use("/api", require("./routes/testRoutes"));  // “Any request starting with /api, send it to this router.”, then in router: router.get("/test", ...), So full path becomes: /api/test , This is route composition.
 
