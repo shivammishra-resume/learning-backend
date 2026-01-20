@@ -23,6 +23,9 @@ app.get("/api/test", (req, res) => {
 app.get("/api/hello", (req, res) => {
   res.json({ name: "Shivam" });
 });
+app.get("/api/admin", (req, res) => {
+  res.json({ page: "admin is open"});
+})
 
 
 
