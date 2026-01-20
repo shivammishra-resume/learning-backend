@@ -1,3 +1,5 @@
+require("dotenv").config();  // Load values from .env into process.env
+
 const express = require("express");    // You are importing Express, express is now a function
 
 const app = express(); //express() creates a server app, app = your server instance,Think:app = restaurant, Express = restaurant blueprint
@@ -15,6 +17,7 @@ app.use("/api", require("./routes/testRoutes"));  // “Any request starting wit
 
 app.get("/", (req, res) => {
   res.send("Hello from backend");
+
 });    // get → HTTP GET request, / → route (URL path), req → request (incoming data), res → response (what you send back), i.e. “When someone visits /, give them a response.”
 
 app.get("/api/test", (req, res) => {
@@ -29,7 +32,9 @@ app.get("/api/admin", (req, res) => {
 
 
 
-app.listen(4000, () => {
-    console.log("Server is running on port 4000");
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 }); // listen = “wait”, 5000 = door number (port), Callback = confirmation message
 // In English: “Hey computer, start a server and listen on door 5000.”

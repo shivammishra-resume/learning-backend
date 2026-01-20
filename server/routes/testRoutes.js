@@ -28,6 +28,9 @@ router.get("/users", (req, res) => {
     const role = req.query.role;
  res.json({ userRole: role });
 });
+router.get("/webname", (req, res) => {
+    res.json({ app: process.env.APP_NAME });
+});
 
 
 
